@@ -12,6 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import '../index.css';
 
 const styles = theme => ({
     fab: {
@@ -119,16 +120,18 @@ class Words extends React.Component {
                         <div key={id}>
                             <Card>
                                 <CardContent>
-                                    <Typography color="textSecondary" gutterBottom>
-                                        가중치: {word.weight}
-                                    </Typography>
                                     <Grid container>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h2">
-                                                {word.word}
+                                        <Grid item xs={4}>
+                                            <Typography variant="h5" component="h3">
+                                            가중치: {word.weight}
                                             </Typography>
                                         </Grid>
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
+                                            <Typography variant="h5" component="h3">
+                                                단어: {word.word}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid item xs={4}>
                                             <Button variant="contained" color="primary" onClick={()=> this.handleDelete(id)}>삭제</Button>
                                         </Grid>
                                     </Grid>
