@@ -7,6 +7,7 @@ import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import '../index.css';
 
 const styles = {
     root: {
@@ -53,6 +54,11 @@ class AppShell extends React.Component {
                         <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
                             <Link component={RouterLink} to="/words">
                                 단어 관리
+                            </Link>
+                        </MenuItem>
+                        <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
+                            <Link component={RouterLink} to="/lottos">
+                                로또 관리
                             </Link>
                         </MenuItem>
                     </Drawer>
