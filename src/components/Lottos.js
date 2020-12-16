@@ -6,9 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 // import Header from '../Header';
+import Common from '../utills/Common';
+import Ball from './Ball';
 import '../index.css';
+import './ball.css';
 
-const databaseURL = "https://webapp-a7074-default-rtdb.firebaseio.com/";
+
 const getDataURL = "http://localhost:8080/millionD/json";
 let tmpDrwNo;
 
@@ -18,12 +21,12 @@ let tmpDrwNo;
 //     'Origin': 'localhost:3000',
 //     'method': 'POST'
 // })
-
 class Lottos extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            lottos : {},
             totSellamnt: 0,
             returnValue: '',
             drwNoDate: '',
@@ -57,7 +60,7 @@ class Lottos extends React.Component {
     }
 
     _getAllData() {
-        fetch(`${databaseURL}/lottos.json`).then(res => {
+        fetch(`${Common.databaseURL}/lottos.json`).then(res => {
             if(res.status !== 200){
                 throw new Error(res.statusText);
             }
@@ -70,7 +73,7 @@ class Lottos extends React.Component {
     }
 
     _getData(drwNo) {
-        fetch(`${databaseURL}/lottos/${drwNo}.json`).then(res => {
+        fetch(`${Common.databaseURL}/lottos/${drwNo}.json`).then(res => {
             if(res.status !== 200){
                 throw new Error(res.statusText);
             }
@@ -79,7 +82,7 @@ class Lottos extends React.Component {
     }
 
     _put(lotto, drwNo) {
-        return fetch(`${databaseURL}/lottos/${drwNo}.json`,{
+        return fetch(`${Common.databaseURL}/lottos/${drwNo}.json`,{
             method:'put',
             body:JSON.stringify(lotto)
         }).then(res => {
@@ -99,7 +102,7 @@ class Lottos extends React.Component {
     }
 
     _delete(id) {
-        return fetch(`${databaseURL}/lottos/${id}.json`, {
+        return fetch(`${Common.databaseURL}/lottos/${id}.json`, {
             method: 'DELETE'
         }).then(res => {
             if(res.status != 200){
@@ -125,21 +128,57 @@ class Lottos extends React.Component {
 
     render(){
         return(
-            <Card>
-                <CardContent>
-                    <Grid container>
-                        <Grid item xs={9}>
-                            <Button variant="contained" color="primary" onClick={() => this.updateLottoNum()}>업데이트</Button>
-                        </Grid>
-                        <Grid item xs={1}>
-                            <span>+</span>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button variant="contained" color="primary" onClick={() => this.updateLottoNum()}>업데이트</Button>
-                        </Grid>
-                    </Grid>
-                </CardContent>
-            </Card>
+            <div>
+                {Object.keys(this.state.lottos).slice(0).reverse().map(drwNo => {
+                    const lotto = this.state.lottos[drwNo];
+                    if(lotto != null) {;
+                        return (
+                            <div>
+                            <Card key={lotto.drwNo}>
+                                <CardContent>
+                                    <Typography color="textSecondary" gutterBottom>
+                                        회차: {lotto.drwNo} 회차
+                                    </Typography>
+                                    <Grid container>
+                                        <Grid item xs={9}>
+                                            <Ball drwNum={lotto.drwtNo1}/>
+                                            <Ball drwNum={lotto.drwtNo2}/>
+                                            <Ball drwNum={lotto.drwtNo3}/>
+                                            <Ball drwNum={lotto.drwtNo4}/>
+                                            <Ball drwNum={lotto.drwtNo5}/>
+                                            <Ball drwNum={lotto.drwtNo6}/>
+                                        </Grid>
+                                        <Grid item xs={1}>
+                                            <Typography  variant="h5" component="h2">+</Typography>
+                                        </Grid>
+                                        <Grid item xs={2}>
+                                            <Typography  variant="h5" component="h2">{lotto.bnusNo}</Typography>
+                                        </Grid>
+                                    </Grid>
+                                </CardContent>
+                            </Card>
+                            <br/>
+                            </div>
+                        );
+                    }
+                })}
+            </div>
+            
+            // <Card>
+            //     <CardContent>
+            //         <Grid container>
+            //             <Grid item xs={9}>
+            //                 <div></div>
+            //             </Grid>
+            //             <Grid item xs={1}>
+            //                 <span>+</span>
+            //             </Grid>
+            //             <Grid item xs={2}>
+            //                 <Button variant="contained" color="primary" onClick={() => this.updateLottoNum()}>업데이트</Button>
+            //             </Grid>
+            //         </Grid>
+            //     </CardContent>
+            // </Card>
         );
     }
 }
