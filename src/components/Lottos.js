@@ -3,9 +3,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-// import Header from '../Header';
 import Common from '../utills/Common';
 import Ball from './Ball';
 import '../index.css';
@@ -13,8 +10,6 @@ import './ball.css';
 
 
 const getDataURL = "http://localhost:8080/millionD/json";
-let tmpDrwNo;
-
 // const headers = new Header({
 //     'Content-Type': 'application/json',
 //     'credentials': 'include',
@@ -65,11 +60,15 @@ class Lottos extends React.Component {
                 throw new Error(res.statusText);
             }
             return res.json();
-        }).then(lottos => this.setState({lottos: (lottos == null) ?{}:lottos}));
+        }).then(lottos => {this.setState({lottos: (lottos == null) ? {} : lottos}); Common.lottos = lottos; console.log("get Lotto data by Lottos.js")});
     }
 
     componentDidMount() {
-        this._getAllData();
+        if(typeof Common.lottos == "undefined" || Common.lottos == null) {
+            this._getAllData();
+        } else {
+            this.setState({lottos:Common.lottos});
+        }
     }
 
     _getData(drwNo) {
@@ -86,7 +85,7 @@ class Lottos extends React.Component {
             method:'put',
             body:JSON.stringify(lotto)
         }).then(res => {
-            if(res.status != 200){
+            if(res.status !== 200){
                 throw new Error(res.statusText);
             }
             return res.json();
@@ -105,7 +104,7 @@ class Lottos extends React.Component {
         return fetch(`${Common.databaseURL}/lottos/${id}.json`, {
             method: 'DELETE'
         }).then(res => {
-            if(res.status != 200){
+            if(res.status !== 200){
                 throw new Error(res.statusText);
             }
             return res.json();
@@ -129,30 +128,30 @@ class Lottos extends React.Component {
     render(){
         return(
             <div>
-                {Object.keys(this.state.lottos).slice(0).reverse().map(drwNo => {
+                {Object.keys(this.state.lottos).reverse().map(drwNo => {
                     const lotto = this.state.lottos[drwNo];
-                    if(lotto != null) {;
+                    if(lotto != null) {
                         return (
-                            <div>
-                            <Card key={lotto.drwNo}>
+                            <div key={drwNo}>
+                            <Card>
                                 <CardContent>
                                     <Typography color="textSecondary" gutterBottom>
                                         회차: {lotto.drwNo} 회차
                                     </Typography>
                                     <Grid container>
                                         <Grid item xs={9}>
-                                            <Ball drwNum={lotto.drwtNo1}/>
-                                            <Ball drwNum={lotto.drwtNo2}/>
-                                            <Ball drwNum={lotto.drwtNo3}/>
-                                            <Ball drwNum={lotto.drwtNo4}/>
-                                            <Ball drwNum={lotto.drwtNo5}/>
-                                            <Ball drwNum={lotto.drwtNo6}/>
+                                            <Ball drwtNo={lotto.drwtNo1}/>
+                                            <Ball drwtNo={lotto.drwtNo2}/>
+                                            <Ball drwtNo={lotto.drwtNo3}/>
+                                            <Ball drwtNo={lotto.drwtNo4}/>
+                                            <Ball drwtNo={lotto.drwtNo5}/>
+                                            <Ball drwtNo={lotto.drwtNo6}/>
                                         </Grid>
                                         <Grid item xs={1}>
                                             <Typography  variant="h5" component="h2">+</Typography>
                                         </Grid>
                                         <Grid item xs={2}>
-                                            <Typography  variant="h5" component="h2">{lotto.bnusNo}</Typography>
+                                        <Ball drwtNo={lotto.bnusNo}/>
                                         </Grid>
                                     </Grid>
                                 </CardContent>

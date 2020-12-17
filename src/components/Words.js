@@ -38,7 +38,7 @@ class Words extends React.Component {
 
     _get() {
         fetch(`${databaseURL}/words.json`).then(res => {
-            if(res.status !== 200){
+            if(res.status != 200){
                 throw new Error(res.statusText);
             }
             return res.json();

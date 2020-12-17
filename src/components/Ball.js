@@ -3,14 +3,14 @@ import './ball.css';
 
 
 function Ball(props) {
-    const ballColorClass = null;
-    if(props.drwNum <= 10) ballColorClass = "yellow";
-    else if(props.drwNum <= 20) ballColorClass = "blue";
-    else if(props.drwNum <= 30) ballColorClass = "red";
-    else if(props.drwNum <= 40) ballColorClass = "gray";
-    else if(props.drwNum <= 50) ballColorClass = "green";
+    let ballColorClass = null;
+    if(props.drwtNo <= 10) ballColorClass = "yellow ball";
+    else if(props.drwtNo <= 20) ballColorClass = "blue ball";
+    else if(props.drwtNo <= 30) ballColorClass = "red ball";
+    else if(props.drwtNo <= 40) ballColorClass = "gray ball";
+    else if(props.drwtNo <= 50) ballColorClass = "green ball";
     return(
-        <div className={ballColorClass}>{props.drwNum}</div>
+        <div className={ballColorClass}><span>{props.drwtNo}</span></div>
     );
 }
 

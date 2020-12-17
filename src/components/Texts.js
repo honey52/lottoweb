@@ -137,8 +137,8 @@ class Texts extends React.Component {
                 {Object.keys(this.state.texts).map(id => {
                     const text = this.state.texts[id];
                     return (
-                        <div>
-                        <Card key={id}>
+                        <div key={id}>
+                        <Card>
                             <CardContent>
                                 <Typography color="textSecondary" gutterBottom>
                                     내용: {text.textContent.substring(0,24)+'...'}

@@ -1,11 +1,16 @@
 .ball {
-    border-radius: 10px;
-    display: inline;
-    height: 20px;
-    width: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    margin-right: 10px;
 }
-.yellow{background-color:tan;}
-.blue{background-color: skyblue;}
+
+.yellow{background-color:#ffe866;}
+.blue{background-color: #47cbff;}
 .red{background-color: tomato;}
-.gray{background-color: grey;}
-.green{background-color: aquamarine;} 
+.gray{background-color: grey; color:#fff;}
+.green{background-color: #158d55;} 

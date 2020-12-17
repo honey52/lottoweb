@@ -1,12 +1,15 @@
 import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import AppShell from './Appshell';
+import Common from '../utills/Common';
 import Home from './Home';
 import Texts from './Texts';
 import Words from './Words';
 import Detail from './Detail';
 import Lottos from './Lottos';
+
 import '../index.css';
+import './ball.css';
 
 class App extends React.Component {
     render() {

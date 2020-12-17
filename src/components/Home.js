@@ -8,7 +8,7 @@ class Home extends React.Component {
         return(
             <Card>
                 <CardContent>
-                    React 및 Firebase 기반의 워드 클라우드 프로젝트
+                    Lotto 번호 자동 추출기 프로젝트
                 </CardContent>
             </Card>
         );
