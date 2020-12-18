@@ -1,16 +1,16 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import CustomCard from './CustomCard';
 import '../index.css';
+
+// Link button
+// TotalInfo(slide) Component
+// google ADs
+// copyRight
 
 class Home extends React.Component {
     render(){
         return(
-            <Card>
-                <CardContent>
-                    Lotto 번호 자동 추출기 프로젝트
-                </CardContent>
-            </Card>
+            <CustomCard/>
         );
     }
 }

@@ -136,21 +136,35 @@ class Lottos extends React.Component {
                             <Card>
                                 <CardContent>
                                     <Typography color="textSecondary" gutterBottom>
-                                        회차: {lotto.drwNo} 회차
+                                        {lotto.drwNo} 회차
                                     </Typography>
                                     <Grid container>
-                                        <Grid item xs={9}>
-                                            <Ball drwtNo={lotto.drwtNo1}/>
-                                            <Ball drwtNo={lotto.drwtNo2}/>
-                                            <Ball drwtNo={lotto.drwtNo3}/>
-                                            <Ball drwtNo={lotto.drwtNo4}/>
-                                            <Ball drwtNo={lotto.drwtNo5}/>
-                                            <Ball drwtNo={lotto.drwtNo6}/>
+                                        <Grid item xs={10}>
+                                            <Grid container>
+                                                <Grid item xs={2}>
+                                                    <Ball drwtNo={lotto.drwtNo1}/>
+                                                </Grid>
+                                                <Grid item xs={2}>
+                                                    <Ball drwtNo={lotto.drwtNo2}/>
+                                                </Grid>
+                                                <Grid item xs={2}>
+                                                    <Ball drwtNo={lotto.drwtNo3}/>
+                                                </Grid>
+                                                <Grid item xs={2}>
+                                                    <Ball drwtNo={lotto.drwtNo4}/>
+                                                </Grid>
+                                                <Grid item xs={2}>
+                                                    <Ball drwtNo={lotto.drwtNo5}/>
+                                                </Grid>
+                                                <Grid item xs={2}>
+                                                    <Ball drwtNo={lotto.drwtNo6}/>
+                                                </Grid>                                                
+                                            </Grid>
                                         </Grid>
                                         <Grid item xs={1}>
                                             <Typography  variant="h5" component="h2">+</Typography>
                                         </Grid>
-                                        <Grid item xs={2}>
+                                        <Grid item xs={1}>
                                         <Ball drwtNo={lotto.bnusNo}/>
                                         </Grid>
                                     </Grid>
@@ -162,23 +176,7 @@ class Lottos extends React.Component {
                     }
                 })}
             </div>
-            
-            // <Card>
-            //     <CardContent>
-            //         <Grid container>
-            //             <Grid item xs={9}>
-            //                 <div></div>
-            //             </Grid>
-            //             <Grid item xs={1}>
-            //                 <span>+</span>
-            //             </Grid>
-            //             <Grid item xs={2}>
-            //                 <Button variant="contained" color="primary" onClick={() => this.updateLottoNum()}>업데이트</Button>
-            //             </Grid>
-            //         </Grid>
-            //     </CardContent>
-            // </Card>
-        );
+        )
     }
 }
 
