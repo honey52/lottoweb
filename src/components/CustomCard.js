@@ -43,7 +43,7 @@ const styles = theme => ({
     },
     rightBtn : {
         position: "absolute",
-        right: '-15px',
+        right: '-23px',
         top: '70%'
     },
 

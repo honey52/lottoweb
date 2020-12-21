@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Common from '../utills/Common';
 import Ball from './Ball';
@@ -37,7 +38,7 @@ class Lottos extends React.Component {
             drwtNo3: 0,
             drwtNo1: 0
         };
-        this.drwNo = 0
+        this.drwNo = 942
     }
 
     _getLottoData(drwNo, callback) {
@@ -80,7 +81,7 @@ class Lottos extends React.Component {
         }).then(lotto => this.setState({lotto: (lotto == null) ?{}:lotto}));
     }
 
-    _put(lotto, drwNo) {
+    _put(lotto, drwNo, contiYn) {
         return fetch(`${Common.databaseURL}/lottos/${drwNo}.json`,{
             method:'put',
             body:JSON.stringify(lotto)
@@ -90,7 +91,7 @@ class Lottos extends React.Component {
             }
             return res.json();
         }).then(data => {
-            if(this.drwNo > 1){
+            if(this.drwNo > 1 && contiYn === true){
                 this.drwNo--;
                 this.updateLottoNum();
                 console.log(this.drwNo);
@@ -115,9 +116,9 @@ class Lottos extends React.Component {
         });
     }
 
-    updateLottoNum = () => {
+    updateLottoNum = (contiYn) => {
         this._getLottoData(this.drwNo, (lotto)=>{
-            this._put(lotto, this.drwNo);
+            this._put(lotto, this.drwNo, contiYn);
         })
     }
 
@@ -128,6 +129,7 @@ class Lottos extends React.Component {
     render(){
         return(
             <div>
+                {/* <Button variant="contained" color="primary" onClick={() => this.updateLottoNum(false)}>업데이트</Button> */}
                 {Object.keys(this.state.lottos).reverse().map(drwNo => {
                     const lotto = this.state.lottos[drwNo];
                     if(lotto != null) {

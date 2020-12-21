@@ -1,12 +1,12 @@
 import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import AppShell from './Appshell';
-import Common from '../utills/Common';
 import Home from './Home';
-import Texts from './Texts';
-import Words from './Words';
 import Detail from './Detail';
 import Lottos from './Lottos';
+import MakeBall from './MakeBall';
+import Withdrawal from './Withdrawal';
+import MyBall from './MyBall';
 
 import '../index.css';
 import './ball.css';
@@ -18,10 +18,10 @@ class App extends React.Component {
                 <AppShell>
                     <div>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/texts" component={Texts}/>
-                        <Route exact path="/words" component={Words}/>
                         <Route exact path="/lottos" component={Lottos}/>
-                        <Route exact path="/detail/:textID" component={Detail}/>
+                        <Route exact path="/makeBall" component={MakeBall}/>
+                        <Route exact path="/withdrawal" component={Withdrawal}/>
+                        <Route exact path="/myBall" component={MyBall}/>
                     </div>
                 </AppShell>
             </Router>

@@ -64,9 +64,9 @@ class AppShell extends React.Component {
                             <MenuItem className={classes.menuButton} color="inherit" onClick={this.handleDrawerToggle}>
                                 <MenuIcon/>
                             </MenuItem>
-                            <Typography variant="h6" className={classes.menuTitle}>
-                                MillionD
-                            </Typography>
+                                <Typography variant="h6" className={classes.menuTitle}>
+                                    MillionD
+                                </Typography>
                             <MenuItem className={classes.homeIcon}>
                                 <Link component={RouterLink} to="/">
                                 <HomeIcon style={{color:grey[50]}}/>
@@ -74,25 +74,30 @@ class AppShell extends React.Component {
                             </MenuItem>
                         </Toolbar>
                     </AppBar>
-                    <Drawer open={this.state.toggle}>
+                    <Drawer open={this.state.toggle} onClick={this.handleDrawerToggle}>
                         <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
                             <Link component={RouterLink} to="/">
-                                홈 화면
+                                메인페이지
                             </Link>
                         </MenuItem>
                         <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
-                            <Link component={RouterLink} to="/texts">
-                                텍스트 관리
-                            </Link>
-                        </MenuItem>
-                        <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
-                            <Link component={RouterLink} to="/words">
-                                단어 관리
+                            <Link component={RouterLink} to="/makeBall">
+                                로또번호 추출기
                             </Link>
                         </MenuItem>
                         <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
                             <Link component={RouterLink} to="/lottos">
-                                로또 관리
+                                로또당첨 정보
+                            </Link>
+                        </MenuItem>
+                        <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
+                            <Link component={RouterLink} to="/myBall">
+                                내 번호 관리
+                            </Link>
+                        </MenuItem>
+                        <MenuItem className={classes.menuList} onClick={this.handleDrawerToggle}>
+                            <Link component={RouterLink} to="/withdrawal">
+                                당첨금 지급 안내
                             </Link>
                         </MenuItem>
                     </Drawer>
