@@ -2,12 +2,10 @@ import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import AppShell from './Appshell';
 import Home from './Home';
-import Detail from './Detail';
 import Lottos from './Lottos';
 import MakeBall from './MakeBall';
 import Withdrawal from './Withdrawal';
 import MyBall from './MyBall';
-
 import '../index.css';
 import './ball.css';
 

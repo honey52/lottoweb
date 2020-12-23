@@ -30,5 +30,5 @@ module.exports = {
         contentBase: './public',
         host: 'localhost',
         port: 8080
-    }
+    },
 }
