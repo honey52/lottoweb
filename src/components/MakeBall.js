@@ -38,7 +38,12 @@ class MakeBall extends React.Component {
     }
 
     componentDidMount() {
-        this.fsfe();
+        // 아이피 정보 + 암호화 텍스트 -> 암호화 -> 개인 아이디
+        // 내 정보 가져오기
+        // 내 옵션 가져오기 -> 디스플레이
+        // N회차(최대 10회차) 선택시 디스플레이
+        // 옵션 : n회차 n번 반복 숫자 포함, 보너스 숫자 포함, 번호별 확률 적용, 이전 당첨번호 제외
+        // 
     }
 
     fsfe(){
